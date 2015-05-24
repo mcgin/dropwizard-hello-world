@@ -1,6 +1,10 @@
 package com.example.helloworld;
 
+import com.example.helloworld.auth.SimpleAuthenticator;
+import com.example.helloworld.core.User;
 import io.dropwizard.Application;
+import io.dropwizard.auth.AuthFactory;
+import io.dropwizard.auth.basic.BasicAuthFactory;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import com.example.helloworld.resources.HelloWorldResource;
@@ -30,6 +34,11 @@ public class HelloWorldApplication extends Application<HelloWorldConfiguration> 
         );
         final TemplateHealthCheck healthCheck =
                 new TemplateHealthCheck(configuration.getTemplate());
+
+        environment.jersey().register(AuthFactory.binder(new BasicAuthFactory<User>(new SimpleAuthenticator(),
+                "Authentication Realm",
+                User.class)));
+
         environment.healthChecks().register("template", healthCheck);
         environment.jersey().register(resource);
     }

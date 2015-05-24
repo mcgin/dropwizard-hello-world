@@ -1,8 +1,10 @@
 package com.example.helloworld.resources;
 
 import com.example.helloworld.core.Saying;
+import com.example.helloworld.core.User;
 import com.google.common.base.Optional;
 import com.codahale.metrics.annotation.Timed;
+import io.dropwizard.auth.Auth;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -28,6 +30,14 @@ public class HelloWorldResource {
     @Timed
     public Saying sayHello(@QueryParam("name") Optional<String> name) {
         final String value = String.format(template, name.or(defaultName));
+        return new Saying(counter.incrementAndGet(), value);
+    }
+
+    @GET
+    @Path("secure")
+    @Timed
+    public Saying sayHelloSecurely(@Auth User user) {
+        final String value = String.format("SECURE"+template, user.getName());
         return new Saying(counter.incrementAndGet(), value);
     }
 }
