@@ -1,19 +1,17 @@
 package com.example.helloworld.core;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.validator.constraints.Length;
 
 public class Saying {
-    private long id;
+    private final long id;
 
     @Length(max = 3)
-    private String content;
+    private final String content;
 
-    public Saying() {
-        // Jackson deserialization
-    }
-
-    public Saying(long id, String content) {
+    @JsonCreator
+    public Saying(@JsonProperty long id, @JsonProperty String content) {
         this.id = id;
         this.content = content;
     }
