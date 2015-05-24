@@ -8,3 +8,21 @@ logging:
   loggers:
     # Sets the level for 'com.example.app' to DEBUG.
     com.example.helloworld: DEBUG
+  appenders:
+    - type: console
+      threshold: INFO
+      target: stdout
+    - type: file
+      # The file to which current statements will be logged.
+      currentLogFilename: ./logs/log.log
+
+      # When the log file rotates, the archived log will be renamed to this and gzipped. The
+      # %d is replaced with the previous day (yyyy-MM-dd). Custom rolling windows can be created
+      # by passing a SimpleDateFormat-compatible format as an argument: "%d{yyyy-MM-dd-hh}".
+      archivedLogFilenamePattern: ./logs/log-%d.log.gz
+
+      # The number of archived files to keep.
+      archivedFileCount: 5
+
+      # The timezone used to format dates. HINT: USE THE DEFAULT, UTC.
+      timeZone: UTC
