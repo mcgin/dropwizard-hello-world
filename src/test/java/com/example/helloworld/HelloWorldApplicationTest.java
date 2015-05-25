@@ -1,14 +1,12 @@
 package com.example.helloworld;
 
 import com.codahale.metrics.health.HealthCheckRegistry;
-import com.example.helloworld.core.Saying;
 import com.example.helloworld.resources.HelloWorldResource;
 import io.dropwizard.jersey.setup.JerseyEnvironment;
 import io.dropwizard.setup.Environment;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
 import static org.mockito.Matchers.isA;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;

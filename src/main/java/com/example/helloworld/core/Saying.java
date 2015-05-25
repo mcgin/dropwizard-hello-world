@@ -11,7 +11,7 @@ public class Saying {
     private final String content;
 
     @JsonCreator
-    public Saying(@JsonProperty long id, @JsonProperty String content) {
+    public Saying(@JsonProperty("id") long id, @JsonProperty("content") String content) {
         this.id = id;
         this.content = content;
     }

@@ -37,7 +37,7 @@ public class HelloWorldResource {
     @Path("secure")
     @Timed
     public Saying sayHelloSecurely(@Auth User user) {
-        final String value = String.format("SECURE"+template, user.getName());
+        final String value = String.format(template, user.getName());
         return new Saying(counter.incrementAndGet(), value);
     }
 }
