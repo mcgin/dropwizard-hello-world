@@ -1,7 +1,7 @@
 package com.example.helloworld.resources;
 
 import com.example.helloworld.auth.SimpleAuthenticator;
-import com.example.helloworld.core.Saying;
+import com.example.helloworld.api.Saying;
 import com.example.helloworld.core.User;
 import io.dropwizard.auth.AuthFactory;
 import io.dropwizard.auth.basic.BasicAuthFactory;
