@@ -4,9 +4,6 @@ import com.google.common.base.Optional;
 import org.junit.Assert;
 import org.junit.Test;
 
-/**
- * Created by Aidan on 24/05/2015.
- */
 public class HelloWorldResourceTest {
     @Test
     public void testResourceDefaults() {

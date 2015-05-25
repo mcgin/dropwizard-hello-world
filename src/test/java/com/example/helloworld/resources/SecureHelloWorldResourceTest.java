@@ -6,7 +6,6 @@ import com.example.helloworld.core.User;
 import io.dropwizard.auth.AuthFactory;
 import io.dropwizard.auth.basic.BasicAuthFactory;
 import io.dropwizard.testing.junit.ResourceTestRule;
-import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
 import org.glassfish.jersey.test.grizzly.GrizzlyWebTestContainerFactory;
 import org.junit.Assert;
 import org.junit.ClassRule;
@@ -19,11 +18,10 @@ import javax.ws.rs.core.HttpHeaders;
 
 public class SecureHelloWorldResourceTest {
     @Rule
-    public ExpectedException exception = ExpectedException.none();
+    public final ExpectedException exception = ExpectedException.none();
     @ClassRule
     public static final ResourceTestRule resources =
             ResourceTestRule.builder()
-                    .addProvider(RolesAllowedDynamicFeature.class)
                     .setTestContainerFactory(new GrizzlyWebTestContainerFactory())
                     .addProvider(AuthFactory.binder(new BasicAuthFactory<User>(new SimpleAuthenticator(),
                             "Authentication Realm",
@@ -50,7 +48,5 @@ public class SecureHelloWorldResourceTest {
                 .target("/hello-world/secure")
                 .request()
                 .header(HttpHeaders.AUTHORIZATION, "Basic YmFkLWd1eTpwYXNzd29yZA==").get(Saying.class);//bad-guy:password
-
-
     }
 }

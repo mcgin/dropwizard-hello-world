@@ -12,9 +12,6 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-/**
- * Created by Aidan on 24/05/2015.
- */
 public class HelloWorldApplicationTest {
 
     private final Environment environment = mock(Environment.class);
