@@ -25,4 +25,23 @@ public class Saying {
     public String getContent() {
         return content;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Saying saying = (Saying) o;
+
+        if (getId() != saying.getId()) return false;
+        return !(getContent() != null ? !getContent().equals(saying.getContent()) : saying.getContent() != null);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (int) (getId() ^ (getId() >>> 32));
+        result = 31 * result + (getContent() != null ? getContent().hashCode() : 0);
+        return result;
+    }
 }
